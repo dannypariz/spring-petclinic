@@ -14,7 +14,9 @@ Steps
 Follow the manual from the official Jenkins site: https://www.jenkins.io/doc/book/installing/docker/
 
 Runnable docker images are attached here
+
 To load them:
+
 docker import DockerExport1.tar jenkins-blueocean:v1
 docker import DockerExport1.tar jenkins-docker:v1
 docker run --it jenkins-blueocean:v1 sh
