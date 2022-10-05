@@ -17,21 +17,22 @@ Then the steps above
 
 
 ## steps to create the docker from runnable image:
-```
-Runnable docker images are attached here
-Number of files: 2 (1.00GB)
-Link: https://jumbomail.me/j/7HjrwoqLnUCgaVS
-Expiration date: 2022-10-12
-```
+
+* Runnable docker images are attached here
+* Number of files: 2 (1.00GB)
+* Link: https://jumbomail.me/j/7HjrwoqLnUCgaVS
+* Expiration date: 2022-10-12
+
 
 To load them:
 
+```
 * docker import DockerExport1.tar jenkins-blueocean:v1
 * docker import DockerExport1.tar jenkins-docker:v1
 * docker run --it jenkins-blueocean:v1 sh
 * docker run --it jenkins-docker:v1 sh
 * the pipeline is called spring-petclinic
-
+```
 
 My Jfrog account is: https://dannyp.jfrog.io/
 
