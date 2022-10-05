@@ -21,6 +21,8 @@ docker run --it jenkins-blueocean:v1 sh
 docker run --it jenkins-docker:v1 sh
 the pipeline is called spring-petclinic
 
+
+My Jfrog account is: https://dannyp.jfrog.io/
 Here's my picture
 <a href="https://speakerdeck.com/michaelisvy/spring-petclinic-sample-application">See the presentation here</a>
 
