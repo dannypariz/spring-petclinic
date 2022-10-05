@@ -1,7 +1,8 @@
-# Spring PetClinic Sample Application [![Build Status](https://github.com/spring-projects/spring-petclinic/actions/workflows/maven-build.yml/badge.svg)](https://github.com/spring-projects/spring-petclinic/actions/workflows/maven-build.yml)
-
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/spring-projects/spring-petclinic)
-
+# Danny's Home Assignment
+Steps
+1. Run a docker file running Jenkins
+2. Install basic plugins for Jenikins including Maven, Dependency checker and Artifactory
+3. Create a pipeline job in Jenkins that clones the spring-petclinic job
 ## Understanding the Spring Petclinic application with a few diagrams
 <a href="https://speakerdeck.com/michaelisvy/spring-petclinic-sample-application">See the presentation here</a>
 
@@ -18,7 +19,7 @@ java -jar target/*.jar
 
 You can then access petclinic here: http://localhost:8080/
 
-<img width="1042" alt="petclinic-screenshot" src="https://cloud.githubusercontent.com/assets/838318/19727082/2aee6d6c-9b8e-11e6-81fe-e889a5ddfded.png">
+<img width="1042" alt="petclinic-screenshot" src="[https://ibb.co/GCJNmZ7](https://i.ibb.co/xzsdZnh/Danny-Parizada.png)">
 
 Or you can run it from Maven directly using the Spring Boot Maven plugin. If you do this it will pick up changes that you make in the project immediately (changes to Java source files require a compile as well - most people use an IDE for this):
 
