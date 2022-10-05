@@ -17,7 +17,12 @@ Then the steps above
 
 
 ## steps to create the docker from runnable image:
+```
 Runnable docker images are attached here
+Number of files: 2 (1.00GB)
+Link: https://jumbomail.me/j/7HjrwoqLnUCgaVS
+Expiration date: 2022-10-12
+```
 
 To load them:
 
@@ -29,3 +34,5 @@ To load them:
 
 
 My Jfrog account is: https://dannyp.jfrog.io/
+
+
