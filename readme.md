@@ -27,12 +27,13 @@ Then the steps above
 To load them:
 
 ```
-* docker import DockerExport1.tar jenkins-blueocean:v1
-* docker import DockerExport1.tar jenkins-docker:v1
-* docker run --it jenkins-blueocean:v1 sh
-* docker run --it jenkins-docker:v1 sh
-* the pipeline is called spring-petclinic
+docker import DockerExport1.tar jenkins-blueocean:v1
+docker import DockerExport1.tar jenkins-docker:v1
+docker run --it jenkins-blueocean:v1 sh
+docker run --it jenkins-docker:v1 sh
 ```
+The pipeline is called spring-petclinic
+
 
 My Jfrog account is: https://dannyp.jfrog.io/
 
