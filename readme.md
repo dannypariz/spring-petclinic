@@ -10,18 +10,22 @@ Steps
 8. After cloning the project, the build is done on a docker image
 
 
-## steps to create the docker:
+## steps to create the docker from scratch:
 Follow the manual from the official Jenkins site: https://www.jenkins.io/doc/book/installing/docker/
+Then the steps above
 
+
+
+## steps to create the docker from runnable image:
 Runnable docker images are attached here
 
 To load them:
 
-docker import DockerExport1.tar jenkins-blueocean:v1
-docker import DockerExport1.tar jenkins-docker:v1
-docker run --it jenkins-blueocean:v1 sh
-docker run --it jenkins-docker:v1 sh
-the pipeline is called spring-petclinic
+* docker import DockerExport1.tar jenkins-blueocean:v1
+* docker import DockerExport1.tar jenkins-docker:v1
+* docker run --it jenkins-blueocean:v1 sh
+* docker run --it jenkins-docker:v1 sh
+* the pipeline is called spring-petclinic
 
 
 My Jfrog account is: https://dannyp.jfrog.io/
