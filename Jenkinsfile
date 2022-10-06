@@ -17,12 +17,6 @@ pipeline {
 
             }
         }
-        stage('Build') {
-            steps {
-                //sh "./mvnw spring-boot:build-image -Dcheckstyle.skip"
-                sh "docker build --build-arg JAR_FILE=target/*.jar -t danny/petclinic ."
-            }
-        }
         stage('Scan') {
             steps {
                 dependencyCheck additionalArguments: '''
@@ -34,15 +28,22 @@ pipeline {
                 dependencyCheckPublisher pattern: 'dependency-check-report.xml'
             }
         }
+        stage('Build') {
+            steps {
+                //sh "./mvnw spring-boot:build-image -Dcheckstyle.skip"
+                sh "docker build --build-arg JAR_FILE=target/*.jar -t dannyparizada/spring-petclinic ."
+                sh "docker push dannyparizada/spring-petclinic"
+            }
+        }
         stage('Upload to Artifactory') {
-      agent {
-        docker {
-          image 'releases-docker.jfrog.io/jfrog/jfrog-cli-v2:2.2.0' 
-          reuseNode true
+            agent {
+                  docker {
+                    image 'releases-docker.jfrog.io/jfrog/jfrog-cli-v2:2.2.0' 
+                    reuseNode true
         }
       }
-      steps {
-        sh 'jfrog rt upload --url https://dannyp.jfrog.io/artifactory/ --access-token ${ARTIFACTORY_ACCESS_TOKEN} Jenkinsfile spring-petclinic/'
+            steps {
+                  sh 'jfrog rt upload --url https://dannyp.jfrog.io/artifactory/ --access-token ${ARTIFACTORY_ACCESS_TOKEN} Jenkinsfile spring-petclinic/'
       }
     }
   }
