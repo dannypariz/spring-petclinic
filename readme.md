@@ -1,12 +1,5 @@
 # Danny's Home Assignment
 Steps:
-
-1. Follow instructions on Jenkins website ([link](https://www.jenkins.io/doc/book/installing/docker/)) to run Jenkins on Docker and a Docker-in-Docker container for the Docker build step
-1. Install basic plugins for Jenkins including Maven, Dependency checker and Artifactory1.
-2.  Create a Jfrog account on cloud env, create a repository for the Artifact and create and access token for Jenkins1. Integrate Jenkins with Artifactory by configuring the plugin
-3. Create a pipeline job in Jenkins for spring-petclinic project and use the Jenkinsfile in this repo1. Run a build
-4. The build will clone, build, docker build and docker push an image to dockerhub ([link](https://hub.docker.com/repository/docker/dannyparizada/dockerhubrepo))
-
 1. Follow instructions on Jenkins website ([link](https://www.jenkins.io/doc/book/installing/docker/)) to run Jenkins on Docker and a Docker-in-Docker container for the Docker build step
 1. Install basic plugins for Jenkins including Maven, Dependency checker and Artifactory
 1. Create a Jfrog account on cloud env, create a repository for the Artifact and create and access token for Jenkins
