@@ -6,7 +6,7 @@ Steps:
 1. Integrate Jenkins with Artifactory by configuring the plugin
 1. Create DockerHub account with petclinic repository
 1. Add DockerHub user and password credentials to Jenkins "Credentials Manager"
-1. Create a pipeline job in Jenkins for spring-petclinic project and use the Jenkinsfile in this repo
+1. Create a pipeline job in Jenkins for spring-petclinic project and use the Jenkinsfile in this repo (CSM type: Git)
 1. Run a build
 1. The build will clone, build, docker build and docker push an image to dockerhub ([link](https://hub.docker.com/repository/docker/dannyparizada/dockerhubrepo))
 
