@@ -6,6 +6,7 @@ pipeline {
  environment {
     CI = true
     ARTIFACTORY_ACCESS_TOKEN = credentials('artifactory-access-token')
+    dockerhub = credentials('dockerhub')
   }
     stages {
         stage('Clone') {
@@ -32,6 +33,7 @@ pipeline {
             steps {
                 //sh "./mvnw spring-boot:build-image -Dcheckstyle.skip"
                 sh "docker build --build-arg JAR_FILE=target/*.jar -t dannyparizada/spring-petclinic ."
+                sh "echo $dockerhub_PSW | docker login -u $dockerhub_USR --password-stdin"
                 sh "docker push dannyparizada/spring-petclinic"
             }
         }
