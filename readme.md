@@ -31,7 +31,7 @@ docker run \
   --storage-driver overlay2
 ```
 
-To run Jenkins in docker (this is already pre-build in my docker hub - dockerfile below):
+To run Jenkins in docker (this is already pre-built in my DockerHub - dockerfile below):
 ```
 docker run \
   --name jenkins-blueocean \
