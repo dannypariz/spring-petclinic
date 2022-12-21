@@ -6,7 +6,7 @@ pipeline {
     ARTIFACTORY_ACCESS_TOKEN = credentials('artifactory-access-token')
   }
     stages {
-        stage('Clone) {
+        stage('Clone') {
             steps {
                 sh "jf docker pull danpar.jfrog.io/dojo-dev-docker/dannyparizada/spring-petclinic:latest"
                 sh "echo 'Clone completed'"
@@ -24,7 +24,8 @@ pipeline {
             steps {
                   sh "jf docker tag danpar.jfrog.io/dojo-dev-docker/dannyparizada/spring-petclinic:latest danpar.jfrog.io/dojo-dev-docker/dannyparizada/spring-petclinic:2.2"
                   sh "jf docker push danpar.jfrog.io/dojo-dev-docker/dannyparizada/spring-petclinic:2.2 --build-name=petclinic --build-number=2"
-        
+            }
+        }
         
     stages {
         stage('Publish') {
@@ -43,6 +44,6 @@ pipeline {
             steps {
                 sh "jf docker scan danpar.jfrog.io/dojo-dev-docker/dannyparizada/spring-petclinic:2.2"
                 sh "jf build-scan petclinic 2"
-    }
-  }
+            }
+        }
 }
