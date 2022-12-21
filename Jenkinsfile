@@ -46,5 +46,6 @@ pipeline {
                 sh "jf build-scan petclinic 2"
             }
         }
-     }
-  }
+     
+    }
+}
