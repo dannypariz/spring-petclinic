@@ -23,20 +23,20 @@ pipeline {
                    
          stage('Deploy') {
             steps {
-                  sh "jf docker tag danpar.jfrog.io/dojo-dev-docker/dannyparizada/spring-petclinic:latest danpar.jfrog.io/dojo-dev-docker/dannyparizada/spring-petclinic:4"
-                  sh "jf docker push danpar.jfrog.io/dojo-dev-docker/dannyparizada/spring-petclinic:4 --build-name=petclinic --build-number=4"
+                  sh "jf docker tag danpar.jfrog.io/dojo-dev-docker/dannyparizada/spring-petclinic:latest danpar.jfrog.io/dojo-dev-docker/dannyparizada/spring-petclinic:${BUILD_NUMBER}"
+                  sh "jf docker push danpar.jfrog.io/dojo-dev-docker/dannyparizada/spring-petclinic:${BUILD_NUMBER} --build-name=petclinic --build-number=${BUILD_NUMBER}"
             }
         }
         
         stage('Publish') {
             steps {
-                sh "jf rt build-publish petclinic 4 "
+                sh "jf rt build-publish petclinic ${BUILD_NUMBER} "
             }
         }
         stage('Scan') {
             steps {
-                sh "jf docker scan danpar.jfrog.io/dojo-dev-docker/dannyparizada/spring-petclinic:4"
-                sh "jf build-scan petclinic 4"
+                sh "jf docker scan danpar.jfrog.io/dojo-dev-docker/dannyparizada/spring-petclinic:${BUILD_NUMBER}"
+                //sh "jf build-scan petclinic 4"
             }
         }
     }
