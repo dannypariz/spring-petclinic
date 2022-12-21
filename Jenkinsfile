@@ -1,6 +1,5 @@
 pipeline {
     agent any
-
  environment {
     CI = true
     ARTIFACTORY_ACCESS_TOKEN = credentials('artifactory-access-token')
@@ -27,7 +26,6 @@ pipeline {
             }
         }
         
-    stages {
         stage('Publish') {
             steps {
                 sh "jf rt build-publish danpar.jforg.io/dojo-dev-docker/dannyparizada/spring-petclinic:1"
@@ -35,7 +33,7 @@ pipeline {
         }
         
         
-        stage('Publish') {
+        stage('Publish2') {
             steps {
                 sh "jf rt build-publish petclinic 3 "
             }
@@ -46,6 +44,5 @@ pipeline {
                 sh "jf build-scan petclinic 2"
             }
         }
-     
     }
-}
+ }
