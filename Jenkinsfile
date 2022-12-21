@@ -36,7 +36,7 @@ pipeline {
         
         stage('Publish') {
             steps {
-                sh "jf rt build-publish petclinic 3  "
+                sh "jf rt build-publish petclinic 3 "
             }
         }
         stage('Scan') {
