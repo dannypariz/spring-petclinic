@@ -2,46 +2,41 @@ pipeline {
     agent any
  environment {
     CI = true
-    ARTIFACTORY_ACCESS_TOKEN = credentials('artifactory-access-token')
+    //ARTIFACTORY_ACCESS_TOKEN = credentials('artifactory-access-token')
   }
+  
+ 
     stages {
         stage('Clone') {
             steps {
+                sh "jf config use danpar"
                 sh "jf docker pull danpar.jfrog.io/dojo-dev-docker/dannyparizada/spring-petclinic:latest"
                 sh "echo 'Clone completed'"
             }
         }
-        
-     stage('Build') {
+         stage('Build') {
             steps {
                 sh "echo building the image"
                 sh "echo building complete"
             }
         }
                    
-     stage('Deploy') {
+         stage('Deploy') {
             steps {
-                  sh "jf docker tag danpar.jfrog.io/dojo-dev-docker/dannyparizada/spring-petclinic:latest danpar.jfrog.io/dojo-dev-docker/dannyparizada/spring-petclinic:2.2"
-                  sh "jf docker push danpar.jfrog.io/dojo-dev-docker/dannyparizada/spring-petclinic:2.2 --build-name=petclinic --build-number=2"
+                  sh "jf docker tag danpar.jfrog.io/dojo-dev-docker/dannyparizada/spring-petclinic:latest danpar.jfrog.io/dojo-dev-docker/dannyparizada/spring-petclinic:4"
+                  sh "jf docker push danpar.jfrog.io/dojo-dev-docker/dannyparizada/spring-petclinic:4 --build-name=petclinic --build-number=4"
             }
         }
         
         stage('Publish') {
             steps {
-                sh "jf rt build-publish danpar.jforg.io/dojo-dev-docker/dannyparizada/spring-petclinic:1"
-            }
-        }
-        
-        
-        stage('Publish2') {
-            steps {
-                sh "jf rt build-publish petclinic 3 "
+                sh "jf rt build-publish petclinic 4 "
             }
         }
         stage('Scan') {
             steps {
-                sh "jf docker scan danpar.jfrog.io/dojo-dev-docker/dannyparizada/spring-petclinic:2.2"
-                sh "jf build-scan petclinic 2"
+                sh "jf docker scan danpar.jfrog.io/dojo-dev-docker/dannyparizada/spring-petclinic:4"
+                sh "jf build-scan petclinic 4"
             }
         }
     }
