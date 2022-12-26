@@ -13,7 +13,6 @@ pipeline {
     PRODREPO = 'dojo-prod-docker'
     PRJ = 'dannyparizada/petclinic'
     JFROG_CLI_ENV_EXCLUDE = ';VSCODE*;*ASKPASS;*EXCLUDE'
-    //ARTIFACTORY_ACCESS_TOKEN = credentials('artifactory-access-token')
   }
 
     stages {
