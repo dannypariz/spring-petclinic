@@ -20,11 +20,11 @@ pipeline {
             steps {
                 git branch: 'main',
                     url: 'https://github.com/dannypariz/spring-petclinic.git'
-                sh "mvn clean install -Dcheckstyle.skip"
             }
         }
          stage('Build') {
             steps {
+                sh "mvn clean install -Dcheckstyle.skip"
                 sh "docker build --build-arg JAR_FILE=target/*.jar -t dannyparizada/spring-petclinic ."
             }
         }
@@ -39,6 +39,8 @@ pipeline {
         
         stage('Collect') {
             steps {
+                sh "jf rt build-add-dependencies ${JOB_NAME} ${BUILD_NUMBER} ./"
+                sh "jf rt build-add-git ${JOB_NAME} ${BUILD_NUMBER}"
                 sh "jf rt build-collect-env ${JOB_NAME} ${BUILD_NUMBER}"
             }
         }
