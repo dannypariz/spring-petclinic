@@ -1,4 +1,4 @@
-name: GitHub Actions Pipeline
+name: GitHub Actions Pipeline Danny
 run-name: ${{ github.actor }} is testing out GitHub Actions on my pipeline 🚀
 on: [push]
 jobs:
