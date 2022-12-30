@@ -57,8 +57,8 @@ jobs:
       run: |
         jf rt ping
         jf rt build-collect-env
-        jf rt build-add-dependencies  ./
         jf rt build-add-git
+#     jf rt build-add-dependencies  ./
         
     - name: Publish
       run: |
