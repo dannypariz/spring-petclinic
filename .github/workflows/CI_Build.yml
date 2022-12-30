@@ -49,7 +49,7 @@ jobs:
       run: |
         docker build -t demo-app/dannyparizada .
         docker login danpar.jfrog.io -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-        jf docker tag danpar.jfrog.io/demo-app/dannyparizada/spring-petclinic:latest danpar.jfrog.io/demo-app/dannyparizada/spring-petclinic:6.6
+        jf docker tag demo-app/dannyparizada danpar.jfrog.io/demo-app/dannyparizada/spring-petclinic:6.6
         jf docker push danpar.jfrog.io/demo-app/dannyparizada/spring-petclinic:6.6
         
 
