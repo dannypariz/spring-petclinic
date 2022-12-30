@@ -36,7 +36,7 @@ jobs:
 #      run: jf gradle clean test
       
     - name: Build with Gradle
-      run: jf gradle clean artifactoryPublish -b gradle.build
+      run: jf gradle clean artifactoryPublish -b build.gradle
 
     - name: Build and Push Docker Image
       uses: mr-smithers-excellent/docker-build-push@v4
