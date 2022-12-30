@@ -1,4 +1,4 @@
-name: Java CI with Gradle
+name: GitHub Action Pipeline
 
 on:
   push:
@@ -39,14 +39,17 @@ jobs:
       run: jf gradle clean artifactoryPublish -b build.gradle
 
     - name: Build and Push Docker Image
-      uses: mr-smithers-excellent/docker-build-push@v4
-      with:
-        image: demo-app/my-project
-        tags: v1
-        registry: danpar.jfrog.io
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
-        
+#      uses: mr-smithers-excellent/docker-build-push@v4
+#      with:
+#        image: demo-app/my-project
+#        tags: v1
+#        registry: danpar.jfrog.io
+#        username: ${{ secrets.DOCKER_USERNAME }}
+#        password: ${{ secrets.DOCKER_PASSWORD }}
+      run: |
+        docker login danpar.jfrog.io -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}"
+        jf docker tag danpar.jfrog.io/demo-app/dannyparizada/spring-petclinic:latest danpar.jfrog.io/demo-app/dannyparizada/spring-petclinic:6.6
+        jf docker push danpar.jfrog.io/demo-app/dannyparizada/spring-petclinic:6.6
         
 
     - name: Collect
