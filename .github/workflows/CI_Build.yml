@@ -30,7 +30,9 @@ jobs:
         JF_PASSWORD: ${{ secrets.JF_PASSWORD }}
 
     - name: Config with Gradle
-      run: jf gradlec --repo-resolve spring-libs-release --repo-deploy spring-libs-release
+      run: |
+        jf c use danpar
+        jf gradlec --repo-resolve spring-libs-release --repo-deploy spring-libs-release
 
     - name: Test with Gradle
       run: jf gradle clean test
