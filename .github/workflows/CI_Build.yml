@@ -1,0 +1,65 @@
+name: Java CI with Gradle
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build-java:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up JDK 1.8
+      uses: actions/setup-java@v1
+      with:
+        java-version: 1.8
+
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+      
+    - name: Declare Jfrog
+      uses: jfrog/setup-jfrog-cli@v3
+      env:
+        JF_URL: ${{ secrets.JF_URL }}
+        JF_USER: ${{ secrets.JF_USER }}
+        JF_PASSWORD: ${{ secrets.JF_PASSWORD }}
+
+    - name: Config with Gradle
+      run: jf gradlec --repo-resolve spring-libs-release --repo-deploy spring-libs-release
+
+    - name: Test with Gradle
+      run: jf gradle clean test
+      
+    - name: Build with Gradle
+      run: jf gradle clean artifactoryPublish
+
+    - name: Build and Push Docker Image
+      uses: mr-smithers-excellent/docker-build-push@v4
+      with:
+        image: demo-app/my-project
+        tags: v1
+        registry: danpar.jfrog.io
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        
+        
+
+
+    - name: Collect
+      run: |
+        jf rt ping
+        jf rt build-collect-env
+        jf rt build-add-dependencies  ./
+        jf rt build-add-git
+        
+    - name: Publish
+      run: |
+        jf rt build-publish
+        
+        
+        
