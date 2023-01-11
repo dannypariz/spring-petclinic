@@ -8,6 +8,9 @@ on:
 
 jobs:
   build-java:
+    env:
+      TEST: 'action-test'
+      PROD: 'action-prod'
 
     runs-on: ubuntu-latest
     
@@ -40,10 +43,10 @@ jobs:
 
     - name: Build and Push Docker Image
       run: |
-        docker build -t demo-app/dannyparizada .
+        docker build -t action-dev/github .
         docker login danpar.jfrog.io -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-        jf docker tag demo-app/dannyparizada danpar.jfrog.io/demo-app/dannyparizada/spring-petclinic:6.6
-        jf docker push danpar.jfrog.io/demo-app/dannyparizada/spring-petclinic:6.6
+        jf docker tag action-dev/github danpar.jfrog.io/action-dev/github/spring-petclinic:6.6
+        jf docker push danpar.jfrog.io/action-dev/github/spring-petclinic:1.5
         
 
     - name: Collect
@@ -51,11 +54,21 @@ jobs:
         jf rt ping
         jf rt build-collect-env
         jf rt build-add-git
-#     jf rt build-add-dependencies  ./
         
     - name: Publish
       run: |
         jf rt build-publish
         
+    - name: Promote to Test
+      run: |
+        jf rt build-promote $TEST --status TEST --comment 'unit tests successul'
+        
+    - name: Docker Scan
+      run: |
+        jf docker scan danpar.jfrog.io/action-test/dannyparizada/spring-petclinic:6.6 --vuln
+        
+    - name: Promote to Prod
+      run: |
+        jf rt build-promote $PROD --status PROD --comment 'currently in production'
         
         
