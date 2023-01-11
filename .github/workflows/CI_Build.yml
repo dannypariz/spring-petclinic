@@ -65,7 +65,7 @@ jobs:
         
     - name: Docker Scan
       run: |
-        jf docker scan danpar.jfrog.io/action-test/dannyparizada/spring-petclinic:6.6 --vuln
+        jf docker scan danpar.jfrog.io/action-dev/dannyparizada/spring-petclinic:6.6 --vuln
         
     - name: Promote to Prod
       run: |
