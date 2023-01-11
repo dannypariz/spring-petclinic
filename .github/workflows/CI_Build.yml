@@ -46,7 +46,7 @@ jobs:
         docker build -t action-dev/github .
         docker login danpar.jfrog.io -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
         jf docker tag action-dev/github danpar.jfrog.io/action-dev/github/spring-petclinic:6.6
-        jf docker push danpar.jfrog.io/action-dev/github/spring-petclinic:1.5
+        jf docker push danpar.jfrog.io/action-dev/github/spring-petclinic:6.6
         
 
     - name: Collect
