@@ -25,7 +25,7 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
       
-    - name: Declare Jfrog
+    - name: Declare JfrogCLI
       uses: jfrog/setup-jfrog-cli@v3
       env:
         JF_URL: ${{ secrets.JF_URL }}
