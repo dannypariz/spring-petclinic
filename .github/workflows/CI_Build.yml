@@ -44,9 +44,9 @@ jobs:
     - name: Build and Push Docker Image
       run: |
         docker build -t action-dev/github .
-        docker login mjas.jfrog.io -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-        jf docker tag action-dev/github mjas.jfrog.io/action-dev/github/spring-petclinic:6.6
-        jf docker push mjas.jfrog.io/action-dev/github/spring-petclinic:6.6
+        docker login danpar.jfrog.io -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+        jf docker tag action-dev/github danpar.jfrog.io/action-dev/github/spring-petclinic:6.6
+        jf docker push danpar.jfrog.io/action-dev/github/spring-petclinic:6.6
         
 
     - name: Collect
@@ -65,7 +65,7 @@ jobs:
         
     - name: Docker Scan
       run: |
-        jf docker scan mjas.jfrog.io/action-dev/github/spring-petclinic:6.6 --fail=false --vuln
+        jf docker scan danpar.jfrog.io/action-dev/github/spring-petclinic:6.6 --fail=false --vuln
         
     - name: Promote to Prod
       run: |
